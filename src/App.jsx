@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import "./App.css";
 import CounterC from "./components/CounterC";
 import CounterF from "./components/CounterF";
 
 import Header from "./components/Header";
+import MemoExample from "./components/MemoExample";
+import Dashboard from "./pages/Dashboard";
+
+export const ThemeContext = createContext(null);
 
 function App() {
     let students = [
@@ -21,14 +25,22 @@ function App() {
         alert("this is an alert");
     };
 
-  let test = true;
-  const [show, setShow] = useState(true)
-  let name = "TWIN7"
+    let test = true;
+    const [show, setShow] = useState(true);
+    let name = "TWIN7";
+
+    const [theme, setTheme] = useState(true);
     return (
-        <>
-        <CounterC propsName={test} />
-        <button onClick={() => setShow(!show)}>Show</button>
-        {show && <CounterF name={name} />}
+      <>
+        <ThemeContext.Provider value={{theme, setTheme}}>
+        <Dashboard  />
+
+        </ThemeContext.Provider>
+
+            {/* <MemoExample />
+            <CounterC propsName={test} />
+            <button onClick={() => setShow(!show)}>Show</button>
+            {show && <CounterF name={name} />} */}
             {/* <Header name = "Header" />
       <h1 style={style1}>Students List</h1>
       <ul>
