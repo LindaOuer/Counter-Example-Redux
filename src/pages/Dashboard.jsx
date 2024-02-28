@@ -1,12 +1,10 @@
-import Profile from "./Profile";
-import Sidebar from "./Sidebar";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
     return (
         <>
             <h1>This is the Dashboard page</h1>
-            <Profile />
-            <Sidebar />
+            <Link to="/events">Go To Contact</Link>
         </>
     );
 }
